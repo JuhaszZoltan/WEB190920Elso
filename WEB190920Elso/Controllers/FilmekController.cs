@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WEB190920Elso.Models;
+using WEB190920Elso.ViewModels;
 
 namespace WEB190920Elso.Controllers
 {
@@ -17,11 +18,34 @@ namespace WEB190920Elso.Controllers
                 Cim = "Kill Bill"
             };
 
-            return View(film);
-            //return Content("szeretem a cicákat! <3");
-            //return HttpNotFound();
-            //return RedirectToAction("Index", "Home", new { oldal = 1, rendezes = "cim" });
+            var kolcsonzok = new List<Kolcsonzo>()
+            {
+                new Kolcsonzo() { Nev = "Géza" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Zsuzsanna" }
+            };
+
+            var rfvm = new RandomFilmViewModel()
+            {
+                Film = film,
+                Kolcsonzok = kolcsonzok
+            };
+
+            return View(rfvm);
         }
+
+        //return Content("szeretem a cicákat! <3");
+        //return HttpNotFound();
+        //return RedirectToAction("Index", "Home", new { oldal = 1, rendezes = "cim" });
+
+        //ViewData["Film"] = film;
+        //ViewBag.Film = film;
+
 
         public ActionResult Szerkesztes(int id)
         {
@@ -40,6 +64,7 @@ namespace WEB190920Elso.Controllers
             return Content($"oldalszám: {oldal} | rendezés: {rendezes}");
         }
 
+        [Route("Filmek/Megjelenes/{ev:regex(\\d{4})}/{honap:regex(\\d{2}):range(1, 12)}")]
         public ActionResult Megjelenes(int ev, int honap)
         {
             return Content($"év = {ev} | hónap = {honap}");

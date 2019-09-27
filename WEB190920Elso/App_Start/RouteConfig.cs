@@ -13,14 +13,15 @@ namespace WEB190920Elso
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // /filmek/megjelenes/2015/02
-            routes.MapRoute(
-                "FilmekMegjelenesSzerint",
-                "filmek/megjelenes/{ev}/{honap}",
-                new { controller = "Filmek", action = "Megjelenes" },
-                new { ev = @"\d{4}", honap = @"\d{2}"}
-                );
+            routes.MapMvcAttributeRoutes();
 
+            // /filmek/megjelenes/2015/02
+            //routes.MapRoute(
+            //    "FilmekMegjelenesSzerint",
+            //    "filmek/megjelenes/{ev}/{honap}",
+            //    new { controller = "Filmek", action = "Megjelenes" },
+            //    new { ev = @"\d{4}", honap = @"\d{2}"}
+            //    );
 
             routes.MapRoute(
                 name: "Default",
