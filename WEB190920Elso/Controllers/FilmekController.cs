@@ -10,8 +10,25 @@ namespace WEB190920Elso.Controllers
 {
     public class FilmekController : Controller
     {
-        // GET: Filmek/Random
-        public ActionResult Random()
+        public ViewResult Index()
+        {
+            var flk = GetData();
+            return View(flk);
+        }
+
+        private IEnumerable<Film> GetData()
+        {
+            return new List<Film>
+            {
+                new Film(){ Id = 1, Cim = "Matrix" },
+                new Film(){ Id = 2, Cim = "Terminator" },
+                new Film(){ Id = 3, Cim = "Cloud Atlas" },
+                new Film(){ Id = 4, Cim = "True Love" },
+                new Film(){ Id = 5, Cim = "Kill Bill" },
+            };
+        }
+
+        public ViewResult Random()
         {
             var film = new Film()
             {
@@ -56,13 +73,13 @@ namespace WEB190920Elso.Controllers
         //xyz.hu/Filmek/2/ev
         //xyz.hu/Filmek  -> //xyz.hu/Filmek/1/cim
 
-        public ActionResult Index(int oldal = 1, string rendezes = "cim")
-        {
-            //if (!oldal.HasValue) oldal = 1;
-            //if (string.IsNullOrWhiteSpace(rendezes)) rendezes = "cim";
-            
-            return Content($"oldalszám: {oldal} | rendezés: {rendezes}");
-        }
+        //public ActionResult Index(int oldal = 1, string rendezes = "cim")
+        //{
+        //    //if (!oldal.HasValue) oldal = 1;
+        //    //if (string.IsNullOrWhiteSpace(rendezes)) rendezes = "cim";
+
+        //    return Content($"oldalszám: {oldal} | rendezés: {rendezes}");
+        //}
 
         [Route("Filmek/Megjelenes/{ev:regex(\\d{4})}/{honap:regex(\\d{2}):range(1, 12)}")]
         public ActionResult Megjelenes(int ev, int honap)
