@@ -8,8 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@{ 
+@{
     var cssClassNev = Model.Kolcsonzok.Count > 5 ? "nepszeru" : null;
 }
 
@@ -17,7 +16,7 @@
 
 @if (Model.Kolcsonzok.Count == 0)
 {
-    <text>RazorView exclusiver tag</text>
+    <text>RazorView exclusive tag</text>
 }
 else
 {
@@ -27,7 +26,6 @@ else
             <li>@k.Nev</li>
         }
     </ul>
-
 }
 
 

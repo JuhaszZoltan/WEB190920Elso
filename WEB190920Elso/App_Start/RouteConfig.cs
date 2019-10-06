@@ -15,12 +15,12 @@ namespace WEB190920Elso
 
             routes.MapMvcAttributeRoutes();
 
-            // /filmek/megjelenes/2015/02
+            // / filmek / megjelenes / 2015 / 02
             //routes.MapRoute(
             //    "FilmekMegjelenesSzerint",
             //    "filmek/megjelenes/{ev}/{honap}",
             //    new { controller = "Filmek", action = "Megjelenes" },
-            //    new { ev = @"\d{4}", honap = @"\d{2}"}
+            //    new { ev = @"\d{4}", honap = @"\d{2}" }
             //    );
 
             routes.MapRoute(
